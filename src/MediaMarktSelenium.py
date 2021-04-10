@@ -13,7 +13,20 @@ import re
 
 
 def parse_specifications(category, category_url):
-    
+    """
+    A partir de una categoria de productos y su URL, extrae automáticamente
+    información técnica de ciertos productos de Mediamarkt.
+
+    Arguments:
+    * category: String, categoria de productos a extraer información
+    * category_url: String, URL donde se sitúa el listado de un tipo de productos determinado
+
+    Return:
+    * d: Diccionario con la información técnica de productos
+
+    """
+
+    # Ejecución del driver de Chrome del que hace uso Selenium
     driver = webdriver.Chrome('./chromedriver.exe', chrome_options=opts)
 
     d = {
@@ -25,46 +38,65 @@ def parse_specifications(category, category_url):
         "peso": [],
         "precio": []
     }
-    
+
+    # Request de la página objetivo a scrapear
     driver.get(category_url)
 
-    cookies = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, 'privacy-layer-accept-all-button')))
+    # Click en el botón de aceptar cookies, que aparece al cargar la página
+    cookies = WebDriverWait(driver, 5).until(
+        EC.presence_of_element_located((By.ID, 'privacy-layer-accept-all-button')))
     cookies.click()
 
-    mas_productos = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, '//button[@data-test="mms-search-srp-loadmore"]')))
+    # Click en el botón "Más productos" para cargar más elementos
+    mas_productos = WebDriverWait(driver, 5).until(EC.presence_of_element_located(
+        (By.XPATH, '//button[@data-test="mms-search-srp-loadmore"]')))
     mas_productos.click()
 
+    # Primer bucle de "scrolls" para la carga dinámica de productos
+    # (tras pulsar el botón anterior)
     for i in range(5):
         js_down = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/1.2, behavior: "smooth" });'
-        js_up= 'window.scrollTo({ left: 0, top: document.body.scrollHeight/3, behavior: "smooth" });'
+        js_up = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/3, behavior: "smooth" });'
         driver.execute_script(js_down)
         sleep(2.5)
         driver.execute_script(js_up)
         sleep(1.5)
 
+    # Segundo bucle de "scrolls" para la carga dinámica de productos
+    # (tras pulsar el botón anterior)
     for i in range(5):
         js_down = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/1.1, behavior: "smooth" });'
-        js_up= 'window.scrollTo({ left: 0, top: document.body.scrollHeight/4, behavior: "smooth" });'
+        js_up = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/4, behavior: "smooth" });'
         driver.execute_script(js_down)
         sleep(2.5)
         driver.execute_script(js_up)
         sleep(1.5)
 
     # Lista con todos los links a productos
-    links_productos = driver.find_elements_by_xpath('//a[contains(@href, "/es/product/")]')
+    links_productos = driver.find_elements_by_xpath(
+        '//a[contains(@href, "/es/product/")]')
     links_pag = []
 
+    # Extracción de links de cada uno de los productos
     for tag_a in links_productos:
         links_pag.append(tag_a.get_attribute("href"))
 
-    print(len(links_pag))
+    # Mostrar la cantidad de productos recogidos tras hacer los "scrolls"
+    # print(len(links_pag))
 
+    # Bucle para recoger la información dentro de cada producto
     for link in links_pag:
+        # Espera de entre 1 y 1.5 segundos para evitar saturar el servidor
         sleep(random.uniform(1.0, 1.5))
+
+        # Carga del link que contiene al producto (con #features, para cargar
+        # desde el inicio el botón de "mostrar detalles")
         driver.get(link + "#features")
+
         try:
-            # Espera para carga botón "Mostrar detalles"
-            boton = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.XPATH, '//button[span[contains(text(), "Mostrar todos los detalles")]]')))
+            # Espera para carga y click del botón "Mostrar detalles"
+            boton = WebDriverWait(driver, 5).until(EC.presence_of_element_located(
+                (By.XPATH, '//button[span[contains(text(), "Mostrar todos los detalles")]]')))
             boton.click()
 
             # Scroll para carga de características
@@ -73,42 +105,58 @@ def parse_specifications(category, category_url):
 
             # Espera para carga características
             WebDriverWait(driver, 3).until(
-                EC.presence_of_all_elements_located((By.XPATH, '//td[span[contains(text(),"Color")]]'))
+                EC.presence_of_all_elements_located(
+                    (By.XPATH, '//td[span[contains(text(),"Color")]]'))
             )
 
+            # Regex para recoger el modelo del producto a partir
+            # del título de la página
             pattern_modelo = re.compile("- (.+?),")
 
-            # XPath para encontrar características
-            marca = driver.find_element_by_xpath('//div[@data-test="mms-select-details-header"]/span/a/span').text
+            # Conjunto de XPath para encontrar características
+            marca = driver.find_element_by_xpath(
+                '//div[@data-test="mms-select-details-header"]/span/a/span').text
             modelo = driver.find_element_by_xpath('//h1').text
-            modelo = pattern_modelo.search(modelo).group(1).replace(marca.title()+" ", "")
-            pulgadas = driver.find_element_by_xpath('//td[span[contains(text(),"pulgadas")]]//following-sibling::td').text
-            calidad_imagen = driver.find_element_by_xpath('//td[span[contains(text(),"Calidad de imagen")]]//following-sibling::td').text
-            precio = driver.find_element_by_xpath('//span[@font-family="price"]').text
+            modelo = pattern_modelo.search(modelo).group(
+                1).replace(marca.title()+" ", "")
+            pulgadas = driver.find_element_by_xpath(
+                '//td[span[contains(text(),"pulgadas")]]//following-sibling::td').text
+            calidad_imagen = driver.find_element_by_xpath(
+                '//td[span[contains(text(),"Calidad de imagen")]]//following-sibling::td').text
+            precio = driver.find_element_by_xpath(
+                '//span[@font-family="price"]').text
+            # El sistema operativo no se recogerá si los productos son monitores
             if category != "monitores":
-                sistema_operativo = driver.find_element_by_xpath('//td[span[contains(text(),"Sistema operativo")]]//following-sibling::td').text
+                sistema_operativo = driver.find_element_by_xpath(
+                    '//td[span[contains(text(),"Sistema operativo")]]//following-sibling::td').text
+            # El peso sólo se recogerá si los productos son monitores
             if category == "monitores":
-                peso = driver.find_element_by_xpath('//td[span[contains(text(),"Peso")]]//following-sibling::td').text
+                peso = driver.find_element_by_xpath(
+                    '//td[span[contains(text(),"Peso")]]//following-sibling::td').text
 
             # Generación nueva entrada en diccionario
+            # en base a los datos recogidos
             d["modelo"].append(modelo)
             d["marca"].append(marca)
             d["pulgadas"].append(pulgadas)
             d["calidad_imagen"].append(calidad_imagen)
-            if category != "monitores": 
+            if category != "monitores":
                 d["sistema operativo"].append(sistema_operativo)
             else:
                 d["sistema operativo"].append("NA")
 
-            if category == "monitores": 
+            if category == "monitores":
                 d["peso"].append(peso)
             else:
                 d["peso"].append("NA")
             d["precio"].append(precio)
 
+            # Vuelta a la página anterior, con la lista de productos
             driver.back()
 
         except Exception as e:
+            # En caso de excepción, se muestra por pantalla el error y se
+            # vuelve a la página principal para no parar la extracción
             print(e)
             driver.back()
 
@@ -121,38 +169,44 @@ opts.add_argument(
 )
 
 ######################
-## Monitores
+# Monitores
 ######################
 
-d = parse_specifications("monitores","https://www.mediamarkt.es/es/category/_monitores-701179.html")
+d = parse_specifications("monitores",
+                         "https://www.mediamarkt.es/es/category/_monitores-701179.html")
 
 df = pd.DataFrame(data=d)
 
-df['precio']=df['precio'].str.extract(r'(^\d+)')
-df['pulgadas']=df['pulgadas'].str.extract(r'(^\d+)')
-df['peso']=df['peso'].str.extract(r'(^\d+.\d+)')
+df['precio'] = df['precio'].str.extract(r'(^\d+)')
+df['pulgadas'] = df['pulgadas'].str.extract(r'(^\d+)')
+df['peso'] = df['peso'].str.extract(r'(^\d+.\d+)')
 
-df.to_csv("monitores.csv", index = False, encoding = 'utf-8')
+df.to_csv("monitores.csv", index=False, encoding='utf-8')
 
 ######################
-## Portatiles
+# Portatiles
 ######################
 
-d = parse_specifications("portatiles", "https://www.mediamarkt.es/es/category/_port%C3%A1tiles-701175.html")
+d = parse_specifications(
+    "portatiles", "https://www.mediamarkt.es/es/category/_port%C3%A1tiles-701175.html")
 
 df = pd.DataFrame(data=d)
 
-df['precio']=df['precio'].str.extract(r'(^\d+)')
-df['pulgadas']=df['pulgadas'].str.extract(r'(^\d+)')
+df['precio'] = df['precio'].str.extract(r'(^\d+)')
+df['pulgadas'] = df['pulgadas'].str.extract(r'(^\d+)')
 
-df.to_csv("portatiles.csv", index = False, encoding = 'utf-8')
+df.to_csv("portatiles.csv", index=False, encoding='utf-8')
 
 ######################
-## Tablets
+# Tablets
 ######################
 
-d = parse_specifications("tablets","https://www.mediamarkt.es/es/category/_tablets-701178.html")
+d = parse_specifications(
+    "tablets", "https://www.mediamarkt.es/es/category/_tablets-701178.html")
 
 df = pd.DataFrame(data=d)
 
-df.to_csv("tablets.csv", index = False, encoding = 'utf-8')
+df['precio'] = df['precio'].str.extract(r'(^\d+)')
+df['pulgadas'] = df['pulgadas'].str.extract(r'(^\d+)')
+
+df.to_csv("tablets.csv", index=False, encoding='utf-8')
