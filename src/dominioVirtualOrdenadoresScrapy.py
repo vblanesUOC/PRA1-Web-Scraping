@@ -104,4 +104,4 @@ class DominioVirtualSpider(CrawlSpider):
         yield item.load_item()
 
 #Para ejecutar
-#scrapy runspider dominioVirtualOrdenadoresScrapy.py -o portatilesDominioVirtual.csv -t csv
+#scrapy runspider dominioVirtualOrdenadoresScrapy.py -o portatilesDominioVirtualSinLimpiar.csv -t csv
