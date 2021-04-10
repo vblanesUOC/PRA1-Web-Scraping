@@ -1,48 +1,36 @@
-modelo,marca,pulgadas,calidad_imagen,sistema operativo,peso,precio
+modelo,marca,pulgadas,calidad_imagen,sistema operativo,peso,precio_mediamarkt
 M10 HD,LENOVO,10,HD,Android,NA,129
 MatePad 10.4,HUAWEI,10,WUXGA,EMUI,NA,299
-Galaxy Tab A7,SAMSUNG,10,WUXGA,Android,NA,199
 Tab M10 HD (2nd Gen),LENOVO,10,HD,Android 10,NA,149
-MediaPad T5,HUAWEI,10,WUXGA,EMUI 8.0,NA,139
-Galaxy Tab A7,SAMSUNG,10,WUXGA,Android,NA,199
 TAB M10,LENOVO,10,Full-HD,Android 9.0,NA,189
 Tab P11,LENOVO,11,2K UltraWide QHD,Android 10,NA,295
-Galaxy Tab A7,SAMSUNG,10,WUXGA,Android,NA,219
 MediaPad T5,HUAWEI,10,HD,Android,NA,159
 MediaPad T3,HUAWEI,9,HD,Android,NA,119
-Galaxy Tab S6 Lite,SAMSUNG,10,WUXGA,Android,NA,349
 Galaxy Tab S6 Lite,SAMSUNG,10,WUXGA,Android,NA,349
 Tab M10,LENOVO,10,HD,Android,NA,109
 Smart Tab M10 TB-X606FA,LENOVO,10,Full-HD,Android 9.0,NA,219
 TAB M7,LENOVO,7,HD,Android,NA,89
 Yoga Smart Tab,LENOVO,10,Full-HD,Android,NA,299
 Tab S6 Lite 4G,SAMSUNG,10,WUXGA,Android 10,NA,399
-Galaxy Tab S7,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,555
 SPC Gravity Pro,SPC,10,WXGA,Android,NA,129
-Tab S6 Lite 4G,SAMSUNG,10,WUXGA,Android 10,NA,399
 MatePad T 10s,HUAWEI,10,WQXGA,EMUI 10.1,NA,159
+iPad Air (4ª gen),APPLE,10,Retina,iPadOS,NA,959
 SPC Gravity OctaCore,SPC,10,HD,Android 9 Pie,NA,139
-Galaxy Tab S7 4G,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,655
 SPC Gravity Max,SPC,10,HD,Android,NA,113
-MatePad T 10s,HUAWEI,10,WQXGA,EMUI 10.1,NA,148
-X70,WOXTER,7,HD,Android,NA,59
+iPad Pro (2020 2ª gen.),APPLE,11,Retina,iPadOS,NA,1499
 SPC Gravity Lightyear Pro,SPC,8,HD,Android,NA,99
 Galaxy Tab S7 4G,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,725
 Galaxy Tab S7,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,625
-Tab P11 Pro,LENOVO,11,WQXGA,Android 10,NA,699
-TAB1090,SUNSTECH,10,HD,Android 9,NA,129
+iPad Pro (2020 2ª gen),APPLE,11,Retina,iPadOS,NA,1337
 X70,WOXTER,7,HD,Android,NA,59
 TAB1090,SUNSTECH,10,HD,Android 9,NA,129
-Galaxy Tab S7,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,555
 Tab P11 Pro,LENOVO,11,WQXGA,Android 10,NA,749
-Galaxy Tab S7 4G,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,655
 Core-T4 ,CROSSCALL,8,WXGA,Android 9.0,NA,457
+Tab M10 Plus,LENOVO,10,Full-HD,Android 9™ Pie,NA,208
 Galaxy Tab A7,SAMSUNG,10,WUXGA,Android,NA,279
-Galaxy Tab S7,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,555
-Galaxy Tab A7,SAMSUNG,10,WUXGA,Android,NA,259
-Tab E10,LENOVO,10,HD,Android,NA,109
-Galaxy Tab S7 4G,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,655
+iPad Pro (2020 4ª gen),APPLE,12,Retina,iPadOS,NA,1599
+iPad mini (2019),APPLE,7,XGA,iOS,NA,759
 TAB781,SUNSTECH,7,HD,Android 8.1,NA,59
+iPad 8ª generación,APPLE,10,Retina,iPadOS,NA,509
 TAB1081,SUNSTECH,10,HD,Android 8.1,NA,119
-Galaxy Tab S7,SAMSUNG,11,WQXGA,Android 10 con One UI 2.5,NA,625
 SPC Gravity 4G,SPC,10,XGA,Android,NA,129

@@ -1,105 +1,98 @@
-modelo,marca,pulgadas,calidad_imagen,sistema operativo,peso,precio
-Chromebook Z3400FT-AJ0111,ASUS,14,Full-HD,Chrome OS,NA,479
-HP 240,HP,14,Full-HD,Windows 10 Home,NA,389
-Chromebook Z3400FT-AJ0111,ASUS,14,Full-HD,Chrome OS,NA,479
-HP 240,HP,14,Full-HD,Windows 10 Home,NA,389
-Chromebook Z3400FT-AJ0111,ASUS,14,Full-HD,Chrome OS,NA,479
-Chromebook 314,ACER,14,Full-HD,Chrome OS,NA,271
-NEO Z3,THOMSON,12,Full-HD,Windows 10 Home,NA,479
-81M8000LSP,LENOVO,11,HD,Windows 10 Pro,NA,290
-HP Chromebook 14b-na0002ns,HP,14,Full-HD,Chrome OS,NA,467
-HP 250,HP,15,Full-HD,Windows 10 Home,NA,699
-HP 255,HP,15,Full-HD,Windows 10 Home,NA,599
-VivoBook Flip TP412FA-EC707T,ASUS,14,Full-HD,Windows 10 Home,NA,749
-"M415DA-EK337T 14""",ASUS,14,Full-HD,Windows 10 Home,NA,649
-F515MA-BR171T,ASUS,15,HD,Windows 10 Home,NA,399
-ZenBook 14 UX425EA-BM019T,ASUS,14,Full-HD,Windows 10 Home,NA,1099
-F515MA-BR040T,ASUS,15,HD,Windows 10 Home,NA,349
-TUF Dash F15 FX516PM-HN023,ASUS,15,Full-HD,FreeDOS (Sin sistema operativo),NA,1249
-ROG Zephyrus G14 GA401II-HE004T,ASUS,14,Full-HD,Windows 10 Home,NA,1299
-ZenBook 14 Ultralight UX435EAL-KC096T,ASUS,14,Full-HD,FreeDOS (Sin sistema operativo),NA,1399
-ROG Zephyrus G14 GA401IU-HA134T,ASUS,14,WQHD,Windows 10 Home,NA,1799
-TUF Gaming FX505DT-HN540T,ASUS,15,Full-HD,Windows 10 Home,NA,999
-VivoBook Flip TM420IA-EC198T,ASUS,14,Full-HD,Windows 10 Home,NA,749
-ZenBook Flip 13 UX363EA-HP359T,ASUS,13,Full-HD,Windows 10 Home,NA,1399
-VivoBook Flip TP412FA-EC641T,ASUS,14,Full-HD,Windows 10 Home,NA,649
-ROG GV301QH-K5254T,ASUS,13,Retina 4K,Windows 10 Home,NA,3199
-IdeaPad 1 11IGL05,LENOVO,11,HD,Windows 10,NA,299
-Legion 5 15ARH05,LENOVO,15,Full-HD,Windows 10 Home,NA,1099
-ZenBook Flip 13 UX363EA-HP043T,ASUS,13,Full-HD,Windows 10 Home,NA,1299
-Yoga Duet 7 13IML05,LENOVO,13,WQHD,Windows 10 Home,NA,1099
-Yoga Slim 9 14ITL5,LENOVO,14,UHD 4K,Windows 10 Pro,NA,2299
-F415JA-EB501,ASUS,14,Full-HD,FreeDOS (Sin sistema operativo),NA,549
-TUF Dash F15 FX516PM-HN023T,ASUS,15,Full-HD,Windows 10 Home,NA,1449
-ROG Zephyrus G14 GA401IU-HA068,ASUS,14,WQHD,FreeDOS (Sin sistema operativo),NA,1299
-ROG Zephyrus G14 GA401II-HE004,ASUS,14,Full-HD,FreeDOS (Sin sistema operativo),NA,1239
-VivoBook F515JA-BR123T,ASUS,15,HD,Windows 10 Home,NA,599
-HP 240,HP,14,HD,Windows 10 Home,NA,349
-MagicBook Pro,HONOR,16,Full-HD,Windows 10 Home,NA,899
-HP Laptop 15s-fq2036ns,HP,15,Full-HD,FreeDOS (Sin sistema operativo),NA,549
-HP 240,HP,14,Full-HD,Windows 10 Home,NA,389
-VivoBook F515JA-BR137T,ASUS,15,HD,Windows 10 Home,NA,599
-HP Laptop 14s-dq2001ns,HP,14,Full-HD,Windows 10 Home,NA,649
-MateBook D15,HUAWEI,15,Full-HD,Windows 10 Home,NA,699
-MSI BRAVO 15,MSI,15,Full-HD,FreeDOS (Sin sistema operativo),NA,849
-HP Laptop 15s-fq2024ns,HP,15,Full-HD,FreeDOS (Sin sistema operativo),NA,769
-VivoBook14 F413JA-EK307T,ASUS,14,Full-HD,Windows 10 Home,NA,849
-Legion 5 15IMH05H,LENOVO,15,Full-HD,FreeDOS (Sin sistema operativo),NA,949
-IdeaPad Duet 3 10IGL5,LENOVO,10,WUXGA,Windows 10 Home,NA,529
-MateBook D14,HUAWEI,14,Full-HD,Windows 10 Home,NA,849
-MSI GF75 Thin 10UE-017XES,MSI,17,Full-HD,FreeDOS (Sin sistema operativo),NA,1399
-Nitro 5 AN515-55,ACER,15,Full-HD,FreeDOS (Sin sistema operativo),NA,999
-IdeaPad Flex 3 CB 11IGL05,LENOVO,11,HD,Chrome OS,NA,381
-VivoBook 15 K513EA-BQ158,ASUS,15,Full-HD,FreeDOS (Sin sistema operativo),NA,649
-ZenBook 13 UX325EA-EG041T,ASUS,13,Full-HD,Windows 10 Home,NA,1099
-VivoBook 14 K413JP-EK072,ASUS,14,Full-HD,FreeDOS (Sin sistema operativo),NA,849
-Chromebook CT-X636F,LENOVO,10,Full-HD,Chrome OS,NA,279
-VivoBook 15 K513EA-BQ684,ASUS,15,Full-HD,FreeDOS (Sin sistema operativo),NA,749
-IdeaPad Flex 3 CB 11IGL05,LENOVO,11,HD,Chrome OS,NA,336
-HP 14-dw1009ns,HEWLETT PACKARD,14,HD,Windows 10 Home,NA,849
-Chromebook Z1400CN-BV0305,ASUS,14,HD,Chrome OS,NA,305
-TUF Gaming F17 FX706LI-H7117,ASUS,17,Full-HD,FreeDOS (Sin sistema operativo),NA,1199
-HP 14-dw1008ns,HEWLETT PACKARD,14,Full-HD,Windows 10 Home,NA,679
-TUF A15 FA506QR-AZ001,ASUS,15,Full-HD,FreeDOS (Sin sistema operativo),NA,1699
-Chromebook Spin 311,ACER,11,HD,Chrome OS,NA,254
-HP Chromebook x360 12b-ca0001ns,HEWLETT PACKARD,12,HD,Chrome OS,NA,317
-ZenBook™ Pro Duo UX581LV-H2013R,ASUS,15,UHD 4K,Windows 10,NA,2699
-ROG Zephyrus M15 GU502LW-AZ037T,ASUS,15,Full-HD,Windows 10 Home,NA,1449
-MSI GF65 Thin 10SDR-888ES,MSI,15,Full-HD,Windows 10 Home,NA,1099
-HP OMEN 15-ek0013ns,HP,15,Full-HD,FreeDOS (Sin sistema operativo),NA,1104
-Chromebook CB315-3HT,ACER,15,Full-HD,Chrome OS,NA,381
-MSI GL65 Leopard 10SFSK-450ES,MSI,15,Full-HD,Windows 10 Home,NA,1449
-HP Notebook 255 G7 14Z97EA,HP,15,Full-HD,Windows 10 Home,NA,479
-HP Laptop 13-ba1017ns,HP,13,Full-HD,Windows 10 Home,NA,1019
-Yoga 9 14ITL5,LENOVO,14,UHD 4K,Windows 10 Pro,NA,2299
-HP Laptop 15s-fq2003ns,HP,15,Full-HD,Windows 10 Home,NA,649
-MSI GF65 Thin 10SDR-1241ES,MSI,15,Full-HD,Windows 10 Home,NA,1199
-MSI GS66 Stealth 10UE -260ES,MSI,15,Full-HD,Windows 10 Home,NA,2299
-ROG Zephyrus S17 GX701LWS-EV029T,ASUS,17,Full-HD,Windows 10 Home,NA,1849
-Ideapad 330,LENOVO,15,Full-HD,Windows 10 Home,NA,999
-ZenBook™ 13 UX325EA-EG016T,ASUS,13,Full-HD,Windows 10 Home,NA,999
-HP 14-dv0005ns,HEWLETT PACKARD,14,Full-HD,Windows 10 Home,NA,849
-Yoga Creator 7 15IMH05,LENOVO,15,Full-HD,Windows 10 Home,NA,1149
-LENOVO Yoga C930,LENOVO,13,HD,Windows 10 Home,NA,1004
-Ioxbook 15R5A,PRIMUX,15,Full-HD,Windows 10 Home,NA,599
-Yoga 920-13IKB,LENOVO,13,UHD 4K,Windows 10 Home,NA,1699
-ProArt StudioBook Pro17 J700G3T-AV103R,ASUS,17,WUXGA,Windows 10 Pro,NA,2199
-Nitro 5,ACER,15,Full-HD,Windows 10 Home,NA,999
-Duet 3 10IGL5,LENOVO,10,WUXGA,Windows 10 Home in S Mode,NA,384
-ZenBook 14 UX433FA-A5090T,ASUS,14,Full-HD,Windows 10 Home,NA,849
-Satellite Pro C50-E-10C,DYNABOOK,15,Full-HD,Windows 10 Pro,NA,699
-Yoga 910-13IKB,LENOVO,13,Full-HD,Windows 10 Home 64 bits,NA,1699
-Ioxbook 15R3A,PRIMUX,15,Full-HD,Windows 10 Home,NA,569
-LG Gram 14Z90N-V-AR53B,LG ELECTRONICS,14,Full-HD,Windows 10 Home,NA,1199
-MSI Creator 15 A10UH-037ES,MSI,15,UHD 4K,Windows 10 Pro,NA,3799
-ideapad 720S-13IKB,LENOVO,13,Full-HD,Windows 10,NA,949
-MSI Prestige 15,MSI,15,Full-HD,Windows 10 Home,NA,1349
-MSI GF65 Thin 10UE-033ES,MSI,15,Full-HD,Windows 10 Home,NA,1584
-MSI Creator 17 A10SGS-624ES,MSI,17,UHD 4K,Windows 10 Pro,NA,3999
-Surface Laptop 3,MICROSOFT,15,HD,Windows 10 Home,NA,1299
-MSI GP76 LEOPARD 10UE-060ES,MSI,17,Full-HD,Windows 10 Home,NA,1949
-MSI Modern 14 A10RAS,MSI,14,Full-HD,FreeDOS (Sin sistema operativo),NA,1199
-ROG GV301QH-K6069T,ASUS,13,WUXGA,Windows 10 Home,NA,1599
-MSI GP66 Leopard 10UG-064ES,MSI,15,Full-HD,Windows 10 Home,NA,1889
-Surface Laptop 3,MICROSOFT,15,HD,Windows 10 Home,NA,1299
-HP 14-ea0002ns,HEWLETT PACKARD,13,WQXGA,Windows 10 Home,NA,1274
+modelo,marca,pulgadas,calidad_imagen,sistema operativo,peso,precio_mediamarkt
+Chromebook Z3400FT-AJ0111,ASUS,14.0,Full-HD,Chrome OS,NA,479.0
+HP 240,HP,14.0,Full-HD,Windows 10 Home,NA,389.0
+Chromebook 314,ACER,14.0,Full-HD,Chrome OS,NA,271.0
+NEO Z3,THOMSON,12.0,Full-HD,Windows 10 Home,NA,479.0
+81M8000LSP,LENOVO,11.0,HD,Windows 10 Pro,NA,290.0
+HP Chromebook 14b-na0002ns,HP,14.0,Full-HD,Chrome OS,NA,467.0
+HP 250,HP,15.0,Full-HD,Windows 10 Home,NA,699.0
+HP 255,HP,15.0,Full-HD,Windows 10 Home,NA,599.0
+VivoBook Flip TP412FA-EC707T,ASUS,14.0,Full-HD,Windows 10 Home,NA,749.0
+"M415DA-EK337T 14"",ASUS,14,Full-HD,Windows 10 Home,NA,649",NA,NA,NA,NA,NA,NA
+F515MA-BR171T,ASUS,15.0,HD,Windows 10 Home,NA,399.0
+ZenBook 14 UX425EA-BM019T,ASUS,14.0,Full-HD,Windows 10 Home,NA,1099.0
+F515MA-BR040T,ASUS,15.0,HD,Windows 10 Home,NA,349.0
+TUF Dash F15 FX516PM-HN023,ASUS,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1249.0
+ROG Zephyrus G14 GA401II-HE004T,ASUS,14.0,Full-HD,Windows 10 Home,NA,1299.0
+ZenBook 14 Ultralight UX435EAL-KC096T,ASUS,14.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1399.0
+ROG Zephyrus G14 GA401IU-HA134T,ASUS,14.0,WQHD,Windows 10 Home,NA,1799.0
+TUF Gaming FX505DT-HN540T,ASUS,15.0,Full-HD,Windows 10 Home,NA,999.0
+VivoBook Flip TM420IA-EC198T,ASUS,14.0,Full-HD,Windows 10 Home,NA,749.0
+ZenBook Flip 13 UX363EA-HP359T,ASUS,13.0,Full-HD,Windows 10 Home,NA,1399.0
+VivoBook Flip TP412FA-EC641T,ASUS,14.0,Full-HD,Windows 10 Home,NA,649.0
+ROG GV301QH-K5254T,ASUS,13.0,Retina 4K,Windows 10 Home,NA,3199.0
+IdeaPad 1 11IGL05,LENOVO,11.0,HD,Windows 10,NA,299.0
+Legion 5 15ARH05,LENOVO,15.0,Full-HD,Windows 10 Home,NA,1099.0
+ZenBook Flip 13 UX363EA-HP043T,ASUS,13.0,Full-HD,Windows 10 Home,NA,1299.0
+Yoga Duet 7 13IML05,LENOVO,13.0,WQHD,Windows 10 Home,NA,1099.0
+Yoga Slim 9 14ITL5,LENOVO,14.0,UHD 4K,Windows 10 Pro,NA,2299.0
+F415JA-EB501,ASUS,14.0,Full-HD,FreeDOS (Sin sistema operativo),NA,549.0
+TUF Dash F15 FX516PM-HN023T,ASUS,15.0,Full-HD,Windows 10 Home,NA,1449.0
+ROG Zephyrus G14 GA401IU-HA068,ASUS,14.0,WQHD,FreeDOS (Sin sistema operativo),NA,1299.0
+ROG Zephyrus G14 GA401II-HE004,ASUS,14.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1239.0
+VivoBook F515JA-BR123T,ASUS,15.0,HD,Windows 10 Home,NA,599.0
+MagicBook Pro,HONOR,16.0,Full-HD,Windows 10 Home,NA,899.0
+HP Laptop 15s-fq2036ns,HP,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,549.0
+VivoBook F515JA-BR137T,ASUS,15.0,HD,Windows 10 Home,NA,599.0
+HP Laptop 14s-dq2001ns,HP,14.0,Full-HD,Windows 10 Home,NA,649.0
+MateBook D15,HUAWEI,15.0,Full-HD,Windows 10 Home,NA,699.0
+MSI BRAVO 15,MSI,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,849.0
+HP Laptop 15s-fq2024ns,HP,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,769.0
+VivoBook14 F413JA-EK307T,ASUS,14.0,Full-HD,Windows 10 Home,NA,849.0
+Legion 5 15IMH05H,LENOVO,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,949.0
+IdeaPad Duet 3 10IGL5,LENOVO,10.0,WUXGA,Windows 10 Home,NA,529.0
+MateBook D14,HUAWEI,14.0,Full-HD,Windows 10 Home,NA,849.0
+MSI GF75 Thin 10UE-017XES,MSI,17.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1399.0
+Nitro 5 AN515-55,ACER,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,999.0
+IdeaPad Flex 3 CB 11IGL05,LENOVO,11.0,HD,Chrome OS,NA,381.0
+VivoBook 15 K513EA-BQ158,ASUS,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,649.0
+ZenBook 13 UX325EA-EG041T,ASUS,13.0,Full-HD,Windows 10 Home,NA,1099.0
+VivoBook 14 K413JP-EK072,ASUS,14.0,Full-HD,FreeDOS (Sin sistema operativo),NA,849.0
+Chromebook CT-X636F,LENOVO,10.0,Full-HD,Chrome OS,NA,279.0
+VivoBook 15 K513EA-BQ684,ASUS,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,749.0
+HP 14-dw1009ns,HEWLETT PACKARD,14.0,HD,Windows 10 Home,NA,849.0
+Chromebook Z1400CN-BV0305,ASUS,14.0,HD,Chrome OS,NA,305.0
+TUF Gaming F17 FX706LI-H7117,ASUS,17.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1199.0
+HP 14-dw1008ns,HEWLETT PACKARD,14.0,Full-HD,Windows 10 Home,NA,679.0
+TUF A15 FA506QR-AZ001,ASUS,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1699.0
+Chromebook Spin 311,ACER,11.0,HD,Chrome OS,NA,254.0
+HP Chromebook x360 12b-ca0001ns,HEWLETT PACKARD,12.0,HD,Chrome OS,NA,317.0
+ZenBook™ Pro Duo UX581LV-H2013R,ASUS,15.0,UHD 4K,Windows 10,NA,2699.0
+ROG Zephyrus M15 GU502LW-AZ037T,ASUS,15.0,Full-HD,Windows 10 Home,NA,1449.0
+MSI GF65 Thin 10SDR-888ES,MSI,15.0,Full-HD,Windows 10 Home,NA,1099.0
+HP OMEN 15-ek0013ns,HP,15.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1104.0
+Chromebook CB315-3HT,ACER,15.0,Full-HD,Chrome OS,NA,381.0
+MSI GL65 Leopard 10SFSK-450ES,MSI,15.0,Full-HD,Windows 10 Home,NA,1449.0
+HP Notebook 255 G7 14Z97EA,HP,15.0,Full-HD,Windows 10 Home,NA,479.0
+HP Laptop 13-ba1017ns,HP,13.0,Full-HD,Windows 10 Home,NA,1019.0
+Yoga 9 14ITL5,LENOVO,14.0,UHD 4K,Windows 10 Pro,NA,2299.0
+HP Laptop 15s-fq2003ns,HP,15.0,Full-HD,Windows 10 Home,NA,649.0
+MSI GF65 Thin 10SDR-1241ES,MSI,15.0,Full-HD,Windows 10 Home,NA,1199.0
+MSI GS66 Stealth 10UE -260ES,MSI,15.0,Full-HD,Windows 10 Home,NA,2299.0
+ROG Zephyrus S17 GX701LWS-EV029T,ASUS,17.0,Full-HD,Windows 10 Home,NA,1849.0
+Ideapad 330,LENOVO,15.0,Full-HD,Windows 10 Home,NA,999.0
+ZenBook™ 13 UX325EA-EG016T,ASUS,13.0,Full-HD,Windows 10 Home,NA,999.0
+HP 14-dv0005ns,HEWLETT PACKARD,14.0,Full-HD,Windows 10 Home,NA,849.0
+Yoga Creator 7 15IMH05,LENOVO,15.0,Full-HD,Windows 10 Home,NA,1149.0
+LENOVO Yoga C930,LENOVO,13.0,HD,Windows 10 Home,NA,1004.0
+Ioxbook 15R5A,PRIMUX,15.0,Full-HD,Windows 10 Home,NA,599.0
+Yoga 920-13IKB,LENOVO,13.0,UHD 4K,Windows 10 Home,NA,1699.0
+ProArt StudioBook Pro17 J700G3T-AV103R,ASUS,17.0,WUXGA,Windows 10 Pro,NA,2199.0
+Nitro 5,ACER,15.0,Full-HD,Windows 10 Home,NA,999.0
+Duet 3 10IGL5,LENOVO,10.0,WUXGA,Windows 10 Home in S Mode,NA,384.0
+ZenBook 14 UX433FA-A5090T,ASUS,14.0,Full-HD,Windows 10 Home,NA,849.0
+Satellite Pro C50-E-10C,DYNABOOK,15.0,Full-HD,Windows 10 Pro,NA,699.0
+Yoga 910-13IKB,LENOVO,13.0,Full-HD,Windows 10 Home 64 bits,NA,1699.0
+Ioxbook 15R3A,PRIMUX,15.0,Full-HD,Windows 10 Home,NA,569.0
+LG Gram 14Z90N-V-AR53B,LG ELECTRONICS,14.0,Full-HD,Windows 10 Home,NA,1199.0
+MSI Creator 15 A10UH-037ES,MSI,15.0,UHD 4K,Windows 10 Pro,NA,3799.0
+ideapad 720S-13IKB,LENOVO,13.0,Full-HD,Windows 10,NA,949.0
+MSI Prestige 15,MSI,15.0,Full-HD,Windows 10 Home,NA,1349.0
+MSI GF65 Thin 10UE-033ES,MSI,15.0,Full-HD,Windows 10 Home,NA,1584.0
+MSI Creator 17 A10SGS-624ES,MSI,17.0,UHD 4K,Windows 10 Pro,NA,3999.0
+MSI GP76 LEOPARD 10UE-060ES,MSI,17.0,Full-HD,Windows 10 Home,NA,1949.0
+MSI Modern 14 A10RAS,MSI,14.0,Full-HD,FreeDOS (Sin sistema operativo),NA,1199.0
+ROG GV301QH-K6069T,ASUS,13.0,WUXGA,Windows 10 Home,NA,1599.0
+MSI GP66 Leopard 10UG-064ES,MSI,15.0,Full-HD,Windows 10 Home,NA,1889.0
+Surface Laptop 3,MICROSOFT,15.0,HD,Windows 10 Home,NA,1299.0
+HP 14-ea0002ns,HEWLETT PACKARD,13.0,WQXGA,Windows 10 Home,NA,1274.0
