@@ -20,8 +20,27 @@ class DominioVirtualSpider(CrawlSpider):
     #Se asigna que los header referente al de desde donde se realiza la petición sea el de un navegador, ya que sino sale por defecto el de robot
     #al igual que se fija el número máximo de peticiones a realizar
     custom_settings = {
-        'USER_AGENT': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
-        'CLOSESPIDER_PAGECOUNT': 200
+        #Necsario para hacer que cada vez llamamos desde un navegador (cambio de header)
+        "DOWNLOADER_MIDDLEWARES": {
+            #Para que no coja el de por defecto
+            'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+            #Usar los recursos de la librería que se ha instalado para el cambio de user-agents
+            'scrapy_useragents.downloadermiddlewares.useragents.UserAgentsMiddleware': 500,
+        },
+        #Se definen varios a partir de los cuales las peticiones irán rotando
+        "USER_AGENTS": [
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.110 Safari/537.36',
+            # chrome
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.79 Safari/537.36',
+            # chrome
+            'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:55.0) Gecko/20100101 Firefox/55.0',  # firefox
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36',
+            # chrome
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.89 Safari/537.36',
+            # chrome
+        ],
+        #Se definen el número máximo de peticiones a hacer. Se fijan 100 ya que se ha considerado que 100 productos es un buen número
+        'CLOSESPIDER_PAGECOUNT': 100
     }
 
     #Se hace que cada petición se lance cada segundo, para evitar que los servidores nos relacionen como robots
@@ -36,23 +55,26 @@ class DominioVirtualSpider(CrawlSpider):
     rules = (
         # Regla para hacer scrapy para los monitores
         Rule(
-            # Fijándonos en el link de cada producto, se aprecia como siguen el patrón https://www.dominiovirtual.es/monitores/idProducto/...
-            # Por lo que transladando esta regla a código se traduce en '/monitores/\d+/', en donde, cada web con esta estructura, será parseada por
+            # Fijándonos en el link de cada producto, se aprecia como siguen el patrón https://www.dominiovirtual.es/monitores/idProducto/string/string.html
+            # Por lo que transladando esta regla a código se traduce en un primer lugar a '/monitores/\d+/', en donde, cada web con esta estructura, será parseada por
             # la función creada, ya que será en esta web desde donde se extraiga la info necesaria
+            # Sin embargo, si solo se deja eso, se llegan a algunas webs terminadas en /contactanos que siguen la estructura del patron y que según el archivo robots.txt no se
+            #pueden usar con webScrapy. Por tanto, se añade en la expresión regular .*\.html$ para que tan solo se vayan a las webs con estas estructuras
             #NOTA: Si se deseara tener acceso a todas las categorías, sin importar que sean monitores o no, se debería de cambiar la regla a allow=r'/\w+/\d+/.*', en donde w+ hace referencia a cualquier string = cualquier categoría
             LinkExtractor(
-                allow=r'/monitoressss/\d+/'
+                allow=r'/monitores/\d+/.*\.html$'
             ), follow=True, callback='parse_monitor'
         ),
-        # Regla para recorrer las diferentes páginas referentes a la sección
-        Rule(
+        # Regla para recorrer las diferentes páginas referentes a la sección --> Se COMENTA al ver en robots.txt la siguiente norma Disallow: /*?*, que impide usar esta rule
+        #No obstante, no debería de ser un problema, ya que dentro de cada producto hay links a otros productos de la categoría
+        #Rule(
             # Fijándonos en el link de cambio de página de la categoría, se aprecia como siguen el patrón en el link &p=NUM_PAG,
             # por lo que transladando este hecho al código como en el caso anterior, con la diferencia que en este caso no se mandará a ninguna función
             #ya que a partir de esta página será de donde se extraigan los item con la regla anterior
-            LinkExtractor(
-                allow=r'&p=\d+'
-            ), follow=True
-        )
+            #LinkExtractor(
+            #    allow=r'&p=\d+'
+            #), follow=True
+        #)
     )
     #Mediante esta función se hará el parseo de cada Item. Será llamada como se ha visto, cuando se encuentre un item por medio de la primera Rule
     def parse_monitor(self, response):
@@ -65,11 +87,14 @@ class DominioVirtualSpider(CrawlSpider):
         item.add_xpath('marca','//p[@id="product_mpn"]/span[@itemprop="brand"]/text()')
         # Para la mayoría del resto de categorías, se encuentran en diferentes td, en donde para su recolección, se presta atención al nombre que tiene este td en la web,
         # para buscar el inmediatamente posterior para obtener su valor (se tiene la estructura nombre categoría -valor)
-        item.add_xpath('pulgadas',"//tr/td[text() = 'Tamaño de pantalla:']/following-sibling::td[1]/text()")
+        item.add_xpath('pulgadas',"//tr/td[text() = 'Diagonal de la pantalla:']/following-sibling::td[1]/text()")
         item.add_xpath('calidad_imagen',"//tr/td[text() = 'Tipo HD:']/following-sibling::td[1]/text()")
         item.add_xpath('sistema_operativo',"//tr/td[text() = 'Sistema operativo instalado:']/following-sibling::td[1]/text()")
         item.add_xpath('peso',"//tr/td[text() = 'Peso:']/following-sibling::td[1]/text()")
         #Para el caso del precio, se encuentra un caso similar al del modelo y marca, en donde se aprecia que este aparece en un span cuyo id es "our_price_display"
-        item.add_xpath('precio','//span[@id="our_price_display"]/text()')
+        item.add_xpath('precio_dominioVirtual','//span[@id="our_price_display"]/text()')
         #Una vez extraídos todos los campos, se carga el item a la colección
         yield item.load_item()
+
+#Para ejecutar:
+#scrapy runspider dominioVirtualMonitoresScrapy.py -o monitoresDominioVirtual.csv -t csv
