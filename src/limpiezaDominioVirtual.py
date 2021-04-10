@@ -8,6 +8,8 @@ def limpiezaDomVirtual(df):
     df = df.replace('No indicado', 'NA')
     # Para las pulgadas, se encuentra el formato 31,2 cm (12.3") --> en donde tan solo interesa el número que se encuentra entre paréntesis
     df['pulgadas'] = df['pulgadas'].str.extract('\((.*?)"\)')
+    #En caso de vacío, como antes, se pondrá NA
+    df.fillna("NA", inplace=True)
     # Para el caso del peso (lo dejamos en kg), se eliminará la unidad de medida, dejando todas ellas en kg como en el caso de MediaMarkt
     # Para ello, haremos una nueva columna con el formato de float y sin las unidades, para poder operar en función de la medida
     df.loc[df['peso'].str.contains(pat=' g'), 'peso_sin_unidades'] = df['peso'].str.replace(' g', '')
@@ -47,6 +49,7 @@ def limpiezaDomVirtual(df):
         if(df['modelo'][x]==''):
             df['modelo'][x]='NA'
 
+
     #Para realizar la eliminación de duplicados, quedándonos con el de menor precio
     df = df.sort_values('precio_dominioVirtual', ascending=False).drop_duplicates('modelo').sort_index()
     return df
@@ -55,6 +58,7 @@ def limpiezaDomVirtual(df):
 #Se lee el csv y se guarda en un dataFrame, con la propiedad skipinitialspace ya que se encuentran muchos espacios en
 # blanco en los registros, que darían problemas al fusionar ambas tablas
 dfTabletsSinLimpiar = pd.read_csv ('../csv/dominioVirtual/tabletsDominioVirtualSinLimpiar.csv', skipinitialspace=True)
+#Se pasa por la función creada
 dfTabletsDominioVirtual = limpiezaDomVirtual(dfTabletsSinLimpiar)
 
 ################ CARGA PORTATILES DOMINIO VIRTUAL ################
@@ -65,12 +69,11 @@ dfOrdenadoresDominioVirtual = limpiezaDomVirtual(dfOrdenadoresSinLimpiar)
 dfMonitoresSinLimpiar = pd.read_csv ('../csv/dominioVirtual/monitoresDominioVirtualSinLimpiar.csv', skipinitialspace=True)
 dfMonitoresDominioVirtual = limpiezaDomVirtual(dfMonitoresSinLimpiar)
 
+#print(dfTabletsDominioVirtual.to_string())
+#print(dfOrdenadoresDominioVirtual.to_string())
+#print(dfMonitoresDominioVirtual.to_string())
 
-print(dfTabletsDominioVirtual.to_string())
-print(dfOrdenadoresDominioVirtual.to_string())
-print(dfMonitoresDominioVirtual.to_string())
-
-
+#Se genera el csv limpio
 dfTabletsDominioVirtual.to_csv("tabletsDominioVirtual.csv", index=False, encoding='utf-8')
-dfOrdenadoresDominioVirtual.to_csv("portatilesDominioVirtual.csv", index=False, encoding='utf-8')
-dfMonitoresDominioVirtual.to_csv("monitoresDominioVirtual.csv", index=False, encoding='utf-8')
+dfOrdenadoresDominioVirtual.to_csv("monitoresDominioVirtual.csv", index=False, encoding='utf-8')
+dfMonitoresDominioVirtual.to_csv("portatilesDominioVirtual.csv", index=False, encoding='utf-8')
