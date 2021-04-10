@@ -1,0 +1,21 @@
+calidad_imagen,marca,modelo,peso,precio_dominioVirtual,pulgadas,sistema_operativo
+NA,Apple,iPhone XS Max,NA,871.20,,NA
+NA,Microsoft,Surface Surface Pro,0.812,1206.83,12.3,Windows 10 Pro
+NA,Microsoft,Surface Pro 7,0.775,842.72,12.3,Windows 10 Pro
+IPS,Apple,iPad iPad mini,0.3082,826.60,7.9,iOS 12
+TFT,Samsung,Galaxy Tab Active Pro SM-T545N,0.653,677.93,10.1,Android 9.0
+TFT,Samsung,Galaxy Tab S6 Lite Tab S6 Lite 64GB LTE Black,0.467,387.31,10.4,Android 10
+IPS,Lenovo,Tab M10,0.18,139.96,10.1,Android 9.0
+TFT,Samsung,Galaxy Tab A SM-T290N,0.347,135.88,8,Android 9.0
+IPS,SPC,Gravity Pro,0.55,134.73,10.1,No
+IPS,Brigmton,BTPC-1025OC-B,0.535,127.95,10,Android 9.0
+IPS,Brigmton,BTPC-1025OC-N,0.535,127.95,10,Android 9.0
+IPS,Huawei,MediaPad T3,0.46,117.10,9.6,Android 7.0
+IPS,SPC,Gravity Max,0.545,113.47,10.1,Android 8.1
+IPS,Sunstech,TAB1081,0.32,112.82,10.1,Android 8.1
+NA,Innjoo,TABLET CON 3G SUPERB BLACK,NA,111.07,,No
+IPS,Billow,X101PROS+,0.52,110.36,10.1,Android 8.1
+IPS,SPC,Lightyear,0.239,80.74,8,Android 8.1
+IPS,Billow,X703B,0.25,64.54,7,Android 8.1
+IPS,Billow,X703W,0.25,64.54,7,Android 8.1
+IPS,Apple,iPad Pro,0.468,1173.03,11,iOS 12
