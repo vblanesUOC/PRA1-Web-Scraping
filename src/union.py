@@ -28,23 +28,23 @@ def unionDataFrames(df, df2):
 ################ UNION TABLETS ################
 
 # Para hacer la unión de los dos CSV, se lee del directorio el CSV de Mediamarkt el de DominioVirtual 
-df_mediamarkt = pd.read_csv("../csv/mediamark/tabletsMediamarkt.csv")
-df_dominiovirtual = pd.read_csv("../csv/dominioVirtual/tabletsDominioVirtual.csv")
+df_mediamarkt = pd.read_csv("./csv/mediamark/tabletsMediamarkt.csv")
+df_dominiovirtual = pd.read_csv("./csv/dominioVirtual/tabletsDominioVirtual.csv")
 df = unionDataFrames(df_mediamarkt, df_dominiovirtual).fillna("NA")
-df.to_csv("../csv/union_tablets.csv", index=False, encoding='utf-8')
+df.to_csv("./csv/union_tablets.csv", index=False, encoding='utf-8')
 
 ################ UNION PORTATILES ################
 
 # Para hacer la unión de los dos CSV, se lee del directorio el CSV de Mediamarkt y se aprovecha el DF de DominioVirtual ya cargado 
-df_mediamarkt = pd.read_csv("../csv/mediamark/portatilesMediamarkt.csv")
-df_dominiovirtual = pd.read_csv("../csv/dominioVirtual/portatilesDominioVirtual.csv")
+df_mediamarkt = pd.read_csv("./csv/mediamark/portatilesMediamarkt.csv")
+df_dominiovirtual = pd.read_csv("./csv/dominioVirtual/portatilesDominioVirtual.csv")
 df = unionDataFrames(df_mediamarkt, df_dominiovirtual).fillna("NA")
-df.to_csv("../csv/union_portatiles.csv", index=False, encoding='utf-8')
+df.to_csv("./csv/union_portatiles.csv", index=False, encoding='utf-8')
 
 ################ UNION MONITORES ################
 
 # Para hacer la unión de los dos CSV, se lee del directorio el CSV de Mediamarkt y se aprovecha el DF de DominioVirtual ya cargado 
-df_mediamarkt = pd.read_csv("../csv/mediamark/monitoresMediamarkt.csv")
-df_dominiovirtual = pd.read_csv("../csv/dominioVirtual/monitoresDominioVirtual.csv")
+df_mediamarkt = pd.read_csv("./csv/mediamark/monitoresMediamarkt.csv")
+df_dominiovirtual = pd.read_csv("./csv/dominioVirtual/monitoresDominioVirtual.csv")
 df = unionDataFrames(df_mediamarkt, df_dominiovirtual).fillna("NA")
-df.to_csv("../csv/union_monitores.csv", index=False, encoding='utf-8')
+df.to_csv("./csv/union_monitores.csv", index=False, encoding='utf-8')
