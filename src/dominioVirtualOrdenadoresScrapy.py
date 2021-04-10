@@ -87,10 +87,11 @@ class DominioVirtualSpider(CrawlSpider):
         #Primero se crea el nuevo item
         item = ItemLoader(Producto(), response)
         #A continuación prestando atención a la estructura HTML de la web, y haciendo uso de XPATH, se asigna valor a cada una de las características deseadas
-        #Por ejemplo, se puede apreciar como la marca y modelo se encuentran dentro del párrafo (p) con id product_mpn (p[@id="product_mpn"])
-        #Una vez se está en la secció anterior, las propiedades estarán dentro de dos span con propiedades mpn para modelo y brand para marca
-        item.add_xpath('modelo','//p[@id="product_mpn"]/span[@itemprop="mpn"]/text()')
+        #Por ejemplo, se puede apreciar como la marca se encuentran dentro del párrafo (p) con id product_mpn (p[@id="product_mpn"])
+        #Una vez se está en la secció anterior, la propiedad estará dentro del span con la propiedas brand
         item.add_xpath('marca','//p[@id="product_mpn"]/span[@itemprop="brand"]/text()')
+        #Para el modelo, se esocgerá de descripción (posteriormente se realizará limpieza) que se encuentra en el div con id short_description_content
+        item.add_xpath('modelo','//div[@id="short_description_content"]/text()')
         #Para la mayoría del resto de categorías, se encuentran en diferentes td, en donde para su recolección, se presta atención al nombre que tiene este td en la web,
         #para buscar el inmediatamente posterior para obtener su valor (se tiene la estructura nombre categoría -valor)
         item.add_xpath('pulgadas',"//tr/td[text() = 'Tamaño:']/following-sibling::td[1]/text()")
