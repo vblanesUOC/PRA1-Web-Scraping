@@ -75,5 +75,5 @@ dfMonitoresDominioVirtual = limpiezaDomVirtual(dfMonitoresSinLimpiar)
 
 #Se genera el csv limpio
 dfTabletsDominioVirtual.to_csv("tabletsDominioVirtual.csv", index=False, encoding='utf-8')
-dfOrdenadoresDominioVirtual.to_csv("monitoresDominioVirtual.csv", index=False, encoding='utf-8')
-dfMonitoresDominioVirtual.to_csv("portatilesDominioVirtual.csv", index=False, encoding='utf-8')
+dfOrdenadoresDominioVirtual.to_csv("portatilesDominioVirtual.csv", index=False, encoding='utf-8')
+dfMonitoresDominioVirtual.to_csv("monitoresDominioVirtual.csv", index=False, encoding='utf-8')
