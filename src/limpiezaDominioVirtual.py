@@ -31,24 +31,46 @@ def limpiezaDomVirtual(df):
     #Se cambian las comas por puntos para homogeneizarlo con las demás columnas
     df['precio_dominioVirtual'] = df['precio_dominioVirtual'].str.replace(',', '.')
 
+
+    #Para el caso del modelo, nos quedaremos solo con el modelo en sí, que para hacerlo similar a mediamark, nos quedaremos con
+    # el nombre que hay entre el primer espacio y la coma
+    for x in  range(df['modelo'].size):
+        #Encontramos la posición de empezar a recortar, en base a la marca (ya que siempre sale) y añadimos también la posición del espacio detrás de la marca
+        start = df['modelo'][x].lower().find(df['marca'][x].lower()) + len(df['marca'][x]) + 1
+        #La posición final será la primera coma después de la posición de inicio
+        end = df['modelo'][x].find(',', start)
+        #Si aparece el guión con espacios anteriores y posteriores, es que el producto no ha usado "," sino " - " como separación, por lo que se actualiza la posición final en base a este
+        if " - " in df['modelo'][x][start:end]:
+            end = df['modelo'][x].find(' -', start)
+        #Para cada una se realiza el splitado
+        df['modelo'][x]= df['modelo'][x][start:end]
+        if(df['modelo'][x]==''):
+            df['modelo'][x]='NA'
+
+    #Para realizar la eliminación de duplicados, quedándonos con el de menor precio
+    df = df.sort_values('precio_dominioVirtual', ascending=False).drop_duplicates('modelo').sort_index()
     return df
 
-
-################ CARGA TABLETS DOMINIO VIRTUAL ################
+#### CARGA TABLETS DOMINIO VIRTUAL ####
 #Se lee el csv y se guarda en un dataFrame, con la propiedad skipinitialspace ya que se encuentran muchos espacios en
 # blanco en los registros, que darían problemas al fusionar ambas tablas
-dfTabletsSinLimpiar = pd.read_csv ('../csv/dominioVirtual/tabletsDominioVirtual.csv', skipinitialspace=True)
+dfTabletsSinLimpiar = pd.read_csv ('../csv/dominioVirtual/tabletsDominioVirtualSinLimpiar.csv', skipinitialspace=True)
 dfTabletsDominioVirtual = limpiezaDomVirtual(dfTabletsSinLimpiar)
 
 ################ CARGA PORTATILES DOMINIO VIRTUAL ################
-dfOrdenadoresSinLimpiar = pd.read_csv ('../csv/dominioVirtual/portatilesDominioVirtual.csv', skipinitialspace=True)
+dfOrdenadoresSinLimpiar = pd.read_csv ('../csv/dominioVirtual/portatilesDominioVirtualSinLimpiar.csv', skipinitialspace=True)
 dfOrdenadoresDominioVirtual = limpiezaDomVirtual(dfOrdenadoresSinLimpiar)
 
 ################ CARGA MONITORES DOMINIO VIRTUAL ################
-dfMonitoresSinLimpiar = pd.read_csv ('../csv/dominioVirtual/monitoresDominioVirtual.csv', skipinitialspace=True)
+dfMonitoresSinLimpiar = pd.read_csv ('../csv/dominioVirtual/monitoresDominioVirtualSinLimpiar.csv', skipinitialspace=True)
 dfMonitoresDominioVirtual = limpiezaDomVirtual(dfMonitoresSinLimpiar)
 
 
 print(dfTabletsDominioVirtual.to_string())
 print(dfOrdenadoresDominioVirtual.to_string())
 print(dfMonitoresDominioVirtual.to_string())
+
+
+dfTabletsDominioVirtual.to_csv("tabletsDominioVirtual.csv", index=False, encoding='utf-8')
+dfOrdenadoresDominioVirtual.to_csv("portatilesDominioVirtual.csv", index=False, encoding='utf-8')
+dfMonitoresDominioVirtual.to_csv("monitoresDominioVirtual.csv", index=False, encoding='utf-8')
