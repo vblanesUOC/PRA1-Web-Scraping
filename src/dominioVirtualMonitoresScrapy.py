@@ -4,7 +4,7 @@ from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from scrapy.loader import ItemLoader
 
-
+#Se crea el Item con las características deseadas para completarlas cuando se realice el WebScrapy de la web
 class Producto(Item):
     modelo = Field()
     marca = Field()
@@ -12,46 +12,64 @@ class Producto(Item):
     calidad_imagen = Field()
     sistema_operativo = Field()
     peso = Field()
-    precio= Field()
+    precio_dominioVirtual= Field()
 
-
+#Se define en el Spider como se desea que sea el proceso de Scrapy
 class DominioVirtualSpider(CrawlSpider):
     name = 'dominioVirtualSpider'
+    #Se asigna que los header referente al de desde donde se realiza la petición sea el de un navegador, ya que sino sale por defecto el de robot
+    #al igual que se fija el número máximo de peticiones a realizar
     custom_settings = {
         'USER_AGENT': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36",
         'CLOSESPIDER_PAGECOUNT': 200
     }
 
+    #Se hace que cada petición se lance cada segundo, para evitar que los servidores nos relacionen como robots
     download_delay = 1
 
-    allowed_domains = ['dominiovirtual.es'] #Acotar el espectro de búsqueda (no ir a publi por ejemplo)
+    # Acotar el espectro de búsqueda analizando las webs que se van a analizar, para evitra desvíos no deseados (no ir a publi por ejemplo)
+    allowed_domains = ['dominiovirtual.es']
 
+    #Se define la web por la que se empezará la búsqueda. En este caso, la sección de monitores de la web
     start_urls = ['https://www.dominiovirtual.es/22-monitores']
 
     rules = (
-        # Monitores
+        # Regla para hacer scrapy para los monitores
         Rule(
+            # Fijándonos en el link de cada producto, se aprecia como siguen el patrón https://www.dominiovirtual.es/monitores/idProducto/...
+            # Por lo que transladando esta regla a código se traduce en '/monitores/\d+/', en donde, cada web con esta estructura, será parseada por
+            # la función creada, ya que será en esta web desde donde se extraiga la info necesaria
+            #NOTA: Si se deseara tener acceso a todas las categorías, sin importar que sean monitores o no, se debería de cambiar la regla a allow=r'/\w+/\d+/.*', en donde w+ hace referencia a cualquier string = cualquier categoría
             LinkExtractor(
-                # allow=r'/\w+/\d+/.*'
-                allow=r'/monitores/\d+/'
+                allow=r'/monitoressss/\d+/'
             ), follow=True, callback='parse_monitor'
         ),
-
-        # Paginación
+        # Regla para recorrer las diferentes páginas referentes a la sección
         Rule(
+            # Fijándonos en el link de cambio de página de la categoría, se aprecia como siguen el patrón en el link &p=NUM_PAG,
+            # por lo que transladando este hecho al código como en el caso anterior, con la diferencia que en este caso no se mandará a ninguna función
+            #ya que a partir de esta página será de donde se extraigan los item con la regla anterior
             LinkExtractor(
                 allow=r'&p=\d+'
             ), follow=True
         )
     )
-
+    #Mediante esta función se hará el parseo de cada Item. Será llamada como se ha visto, cuando se encuentre un item por medio de la primera Rule
     def parse_monitor(self, response):
+        #Primero se crea el nuevo item
         item = ItemLoader(Producto(), response)
+        # A continuación prestando atención a la estructura HTML de la web, y haciendo uso de XPATH, se asigna valor a cada una de las características deseadas
+        # Por ejemplo, se puede apreciar como la marca y modelo se encuentran dentro del párrafo (p) con id product_mpn (p[@id="product_mpn"])
+        # Una vez se está en la secció anterior, las propiedades estarán dentro de dos span con propiedades mpn para modelo y brand para marca
         item.add_xpath('modelo','//p[@id="product_mpn"]/span[@itemprop="mpn"]/text()')
         item.add_xpath('marca','//p[@id="product_mpn"]/span[@itemprop="brand"]/text()')
+        # Para la mayoría del resto de categorías, se encuentran en diferentes td, en donde para su recolección, se presta atención al nombre que tiene este td en la web,
+        # para buscar el inmediatamente posterior para obtener su valor (se tiene la estructura nombre categoría -valor)
         item.add_xpath('pulgadas',"//tr/td[text() = 'Tamaño de pantalla:']/following-sibling::td[1]/text()")
         item.add_xpath('calidad_imagen',"//tr/td[text() = 'Tipo HD:']/following-sibling::td[1]/text()")
         item.add_xpath('sistema_operativo',"//tr/td[text() = 'Sistema operativo instalado:']/following-sibling::td[1]/text()")
         item.add_xpath('peso',"//tr/td[text() = 'Peso:']/following-sibling::td[1]/text()")
+        #Para el caso del precio, se encuentra un caso similar al del modelo y marca, en donde se aprecia que este aparece en un span cuyo id es "our_price_display"
         item.add_xpath('precio','//span[@id="our_price_display"]/text()')
+        #Una vez extraídos todos los campos, se carga el item a la colección
         yield item.load_item()
