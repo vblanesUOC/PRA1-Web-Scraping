@@ -44,12 +44,12 @@ def limpiezaDomVirtual(df):
         #Si aparece el guión con espacios anteriores y posteriores, es que el producto no ha usado "," sino " - " como separación, por lo que se actualiza la posición final en base a este
         if " - " in df['modelo'][x][start:end]:
             end = df['modelo'][x].find(' -', start)
-        #Para cada una se realiza el splitado
-        df['modelo'][x]= df['modelo'][x][start:end]
+        #Para cada una se realiza el splitado y se pone en mayúsculas
+        df['modelo'][x]= df['modelo'][x][start:end].upper()
         if(df['modelo'][x]==''):
             df['modelo'][x]='NA'
-
-
+    #Se ponen todas las marcas en mayúsculas para homogenear el caso de mediamark con las marcas
+    df['marca']=df['marca'].str.upper()
     #Para realizar la eliminación de duplicados, quedándonos con el de menor precio
     df = df.sort_values('precio_dominioVirtual', ascending=False).drop_duplicates('modelo').sort_index()
     return df
@@ -69,11 +69,12 @@ dfOrdenadoresDominioVirtual = limpiezaDomVirtual(dfOrdenadoresSinLimpiar)
 dfMonitoresSinLimpiar = pd.read_csv ('../csv/dominioVirtual/monitoresDominioVirtualSinLimpiar.csv', skipinitialspace=True)
 dfMonitoresDominioVirtual = limpiezaDomVirtual(dfMonitoresSinLimpiar)
 
-#print(dfTabletsDominioVirtual.to_string())
-#print(dfOrdenadoresDominioVirtual.to_string())
-#print(dfMonitoresDominioVirtual.to_string())
+print(dfTabletsDominioVirtual.to_string())
+print(dfOrdenadoresDominioVirtual.to_string())
+print(dfMonitoresDominioVirtual.to_string())
 
 #Se genera el csv limpio
 dfTabletsDominioVirtual.to_csv("tabletsDominioVirtual.csv", index=False, encoding='utf-8')
 dfOrdenadoresDominioVirtual.to_csv("portatilesDominioVirtual.csv", index=False, encoding='utf-8')
 dfMonitoresDominioVirtual.to_csv("monitoresDominioVirtual.csv", index=False, encoding='utf-8')
+
