@@ -36,7 +36,7 @@ def parse_specifications(category, category_url):
         "calidad_imagen": [],
         "sistema operativo": [],
         "peso": [],
-        "precio": []
+        "precio_mediamarkt": []
     }
 
     # Request de la página objetivo a scrapear
@@ -46,31 +46,6 @@ def parse_specifications(category, category_url):
     cookies = WebDriverWait(driver, 5).until(
         EC.presence_of_element_located((By.ID, 'privacy-layer-accept-all-button')))
     cookies.click()
-
-    # Click en el botón "Más productos" para cargar más elementos
-    mas_productos = WebDriverWait(driver, 5).until(EC.presence_of_element_located(
-        (By.XPATH, '//button[@data-test="mms-search-srp-loadmore"]')))
-    mas_productos.click()
-
-    # Primer bucle de "scrolls" para la carga dinámica de productos
-    # (tras pulsar el botón anterior)
-    for i in range(5):
-        js_down = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/1.2, behavior: "smooth" });'
-        js_up = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/3, behavior: "smooth" });'
-        driver.execute_script(js_down)
-        sleep(2.5)
-        driver.execute_script(js_up)
-        sleep(1.5)
-
-    # Segundo bucle de "scrolls" para la carga dinámica de productos
-    # (tras pulsar el botón anterior)
-    for i in range(5):
-        js_down = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/1.1, behavior: "smooth" });'
-        js_up = 'window.scrollTo({ left: 0, top: document.body.scrollHeight/4, behavior: "smooth" });'
-        driver.execute_script(js_down)
-        sleep(2.5)
-        driver.execute_script(js_up)
-        sleep(1.5)
 
     # Lista con todos los links a productos
     links_productos = driver.find_elements_by_xpath(
@@ -112,13 +87,20 @@ def parse_specifications(category, category_url):
             # Regex para recoger el modelo del producto a partir
             # del título de la página
             pattern_modelo = re.compile("- (.+?),")
+            pattern_apple = re.compile("(.+?),")
 
             # Conjunto de XPath para encontrar características
             marca = driver.find_element_by_xpath(
                 '//div[@data-test="mms-select-details-header"]/span/a/span').text
-            modelo = driver.find_element_by_xpath('//h1').text
-            modelo = pattern_modelo.search(modelo).group(
-                1).replace(marca.title()+" ", "")
+
+            if marca == "APPLE":
+                modelo = driver.find_element_by_xpath('//h1').text
+                modelo = pattern_apple.search(modelo).group(
+                    1).replace(marca.title()+" ", "")
+            else:
+                modelo = driver.find_element_by_xpath('//h1').text
+                modelo = pattern_modelo.search(modelo).group(
+                    1).replace(marca.title()+" ", "")
             pulgadas = driver.find_element_by_xpath(
                 '//td[span[contains(text(),"pulgadas")]]//following-sibling::td').text
             calidad_imagen = driver.find_element_by_xpath(
@@ -151,9 +133,6 @@ def parse_specifications(category, category_url):
                 d["peso"].append("NA")
             d["precio"].append(precio)
 
-            # Vuelta a la página anterior, con la lista de productos
-            driver.back()
-
         except Exception as e:
             # En caso de excepción, se muestra por pantalla el error y se
             # vuelve a la página principal para no parar la extracción
@@ -173,15 +152,24 @@ opts.add_argument(
 ######################
 
 d = parse_specifications("monitores",
-                         "https://www.mediamarkt.es/es/category/_monitores-701179.html")
+                        "https://www.mediamarkt.es/es/category/_monitores-701179.html")
 
 df = pd.DataFrame(data=d)
+
+for i in range(2,10):
+
+    d = parse_specifications("monitores", "https://www.mediamarkt.es/es/category/_monitores-701179.html?page="+str(i))
+
+    df2 = pd.DataFrame(data=d)
+
+    df = df.append(df2, ignore_index=True)
 
 df['precio'] = df['precio'].str.extract(r'(^\d+)')
 df['pulgadas'] = df['pulgadas'].str.extract(r'(^\d+)')
 df['peso'] = df['peso'].str.extract(r'(^\d+.\d+)')
+df = df.sort_values('precio_mediamarkt', ascending=False).drop_duplicates('modelo').sort_index()
 
-df.to_csv("monitores.csv", index=False, encoding='utf-8')
+df.to_csv("../csv/mediamark/monitoresMediamarkt.csv", index=False, encoding='utf-8')
 
 ######################
 # Portatiles
@@ -192,10 +180,19 @@ d = parse_specifications(
 
 df = pd.DataFrame(data=d)
 
+for i in range(2,10):
+
+    d = parse_specifications("portatiles", "https://www.mediamarkt.es/es/category/_port%C3%A1tiles-701175.html?page="+str(i))
+
+    df2 = pd.DataFrame(data=d)
+
+    df = df.append(df2, ignore_index=True)
+
 df['precio'] = df['precio'].str.extract(r'(^\d+)')
 df['pulgadas'] = df['pulgadas'].str.extract(r'(^\d+)')
+df = df.sort_values('precio_mediamarkt', ascending=False).drop_duplicates('modelo').sort_index()
 
-df.to_csv("portatiles.csv", index=False, encoding='utf-8')
+df.to_csv("../csv/mediamark/portatilesMediamarkt.csv", index=False, encoding='utf-8')
 
 ######################
 # Tablets
@@ -206,7 +203,16 @@ d = parse_specifications(
 
 df = pd.DataFrame(data=d)
 
+for i in range(2,10):
+
+    d = parse_specifications("tablets", "https://www.mediamarkt.es/es/category/_tablets-701178.html?page="+str(i))
+
+    df2 = pd.DataFrame(data=d)
+
+    df = df.append(df2, ignore_index=True)
+
 df['precio'] = df['precio'].str.extract(r'(^\d+)')
 df['pulgadas'] = df['pulgadas'].str.extract(r'(^\d+)')
+df = df.sort_values('precio_mediamarkt', ascending=False).drop_duplicates('modelo').sort_index()
 
-df.to_csv("tablets.csv", index=False, encoding='utf-8')
+df.to_csv("../csv/mediamark/tabletsMediamarkt.csv", index=False, encoding='utf-8')
