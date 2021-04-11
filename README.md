@@ -18,9 +18,9 @@ Práctica 1 sobre Web Scraping de la asignatura Tipología y Ciclo de Vida de lo
     * monitoresMediamarkt.csv (Csv extraído de la web mediamark con información sobre monitores, que se obtiene directamente limpio)
     * portatilesMediamarkt.csv (Csv extraído de la web mediamark con información sobre portátiles, que se obtiene directamente limpio)
     * tabletsMediamarkt.csv (Csv extraído de la web mediamark con información sobre tablets, que se obtiene directamente limpio)
-  * union_monitores.csv (Csv final resultante de la unión de las webs anteriores con información sobre monitores)
-  * union_portatiles.csv (Csv final resultante de la unión de las webs anteriores con información sobre portátiles)
-  * union_tablets.csv (Csv final resultante de la unión de las webs anteriores con información sobre tablets)
+  * Especificaciones y precios de dos vendedores de monitores.csv (Csv final resultante de la unión de las webs anteriores con información sobre monitores)
+  * Especificaciones y precios de dos vendedores de portátiles.csv (Csv final resultante de la unión de las webs anteriores con información sobre portátiles)
+  * Especificaciones y precios de dos vendedores de tablets.csv (Csv final resultante de la unión de las webs anteriores con información sobre tablets)
 * src
   * MediaMarktSelenium.py (Ejecutable de Python a partir del cual se hace el web Scrapy de la web de MediaMark)
   * dominioVirtualMonitoresScrapy.py  (Ejecutable de Python a partir del cual se hace el web Scrapy de la web de DominioVirtual, de la sección de monitores)
